@@ -4,6 +4,7 @@
   "description": "Discord Scrapbox integration",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +21,8 @@
   },
   "homepage": "https://github.com/natsuozawa/discord-scrapbox#readme",
   "dependencies": {
-    "discord.js": "^13.7.0"
+    "cheerio": "^1.0.0-rc.11",
+    "discord.js": "^13.7.0",
+    "node-fetch": "^2.6.7"
   }
 }
