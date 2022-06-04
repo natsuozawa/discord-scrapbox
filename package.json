@@ -1,0 +1,25 @@
+{
+  "name": "discord-scrapbox",
+  "version": "1.0.0",
+  "description": "Discord Scrapbox integration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/natsuozawa/discord-scrapbox.git"
+  },
+  "keywords": [
+    "scrapbox"
+  ],
+  "author": "natsuozawa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/natsuozawa/discord-scrapbox/issues"
+  },
+  "homepage": "https://github.com/natsuozawa/discord-scrapbox#readme",
+  "dependencies": {
+    "discord.js": "^13.7.0"
+  }
+}
