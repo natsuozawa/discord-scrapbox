@@ -42,14 +42,10 @@ const createTitleAndUrlForLink = async (projectUrl, reaction) => {
  * @param url
  * @returns {boolean}
  */
-const scrapbox = async requestUrl => {
-    const headers = {
-        'Cookie': 'connect.sid=' + cookie,
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36'
-    };
-    const response = await fetch(requestUrl, { headers: headers });
-    console.log(await response.text())
-    return response.status === 200;
+const scrapbox = async (requestUrl, page) => {
+    await page.goto(requestUrl);
+    await page.waitForTimeout(2000);
+    return true;
 }
 
 module.exports =  {

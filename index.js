@@ -1,6 +1,7 @@
 const { Client, Intents, MessageEmbed } = require('discord.js');
-const { token, projects } = require('./config.json');
+const { token, projects, cookie } = require('./config.json');
 const { scrapbox, createTitleAndUrlForLink } = require('./scrapbox.js')
+const puppeteer = require('puppeteer');
 
 const client = new Client({
     // Intents.FLAGS.GUILDS necessary for functionality.
@@ -15,8 +16,24 @@ const client = new Client({
 
 const emojis = projects.map(p => p.emoji);
 
-client.once('ready', () => {
+let browser;
+let page;
+
+client.once('ready', async () => {
     console.log('Ready!');
+    browser = await puppeteer.launch();
+    page = await browser.newPage();
+
+    if (projects.length === 0) return;
+
+    await page.goto(projects[0].url)
+    const cookies = [
+        {
+            'name': 'connect.sid',
+            'value': cookie
+        }
+    ];
+    await page.setCookie(...cookies);
 });
 
 client.on('messageReactionAdd', async (reaction, user) => {
@@ -41,7 +58,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
     const url = titleAndLink[1];
 
     if (url) {
-        const success = await scrapbox(url, reaction);
+        const success = await scrapbox(url, page);
         if (success) {
             reaction.message.react('✅');
             const successEmbed = new MessageEmbed()
