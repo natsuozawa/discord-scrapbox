@@ -1,9 +1,5 @@
-const path = require('path');
-
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
-
-const { cookie } = require('./config.json')
 
 /**
  * Creates a Scrapbox page url for a link posted on Discord.
@@ -34,7 +30,7 @@ const createTitleAndUrlForLink = async (projectUrl, reaction) => {
         if (!title) return '';
     }
 
-    return [title, new URL(path.join(encodeURIComponent(title), '?body=' + encodeURIComponent(body)), projectUrl).toString()];
+    return [title, new URL(encodeURIComponent(title) + '?body=' + encodeURIComponent(body), projectUrl).toString()];
 }
 
 /**
