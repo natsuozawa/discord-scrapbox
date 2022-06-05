@@ -1,5 +1,5 @@
 const { Client, Intents, MessageEmbed } = require('discord.js');
-const { token, projects, cookie } = require('./config.json');
+const { token, projects, cookie, executablePath } = require('./config.json');
 const { scrapbox, createTitleAndUrlForLink } = require('./scrapbox.js')
 const puppeteer = require('puppeteer');
 
@@ -21,7 +21,11 @@ let page;
 
 client.once('ready', async () => {
     console.log('Ready!');
-    browser = await puppeteer.launch();
+    if (executablePath) {
+        browser = await puppeteer.launch({ executablePath });
+    } else {
+        browser = await puppeteer.launch();
+    }
     page = await browser.newPage();
 
     if (projects.length === 0) return;

@@ -32,3 +32,5 @@ Create a `config.json` as follows.
 ```
 
 Note that `cookie` refers to the `connect.sid` cookie value, and `token` refers to the Discord auth token. To obtain the cookie, simply log in to Scrapbox in your browser and use inspect element. To obtain the token, set up the Bot on Discord, and click Reset Token.
+
+To use a custom chromium distribution, include a property called `executablePath` in `config.json` with the path to the binary.
