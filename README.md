@@ -15,6 +15,18 @@ In order to create a new Scrapbox page, the user reacts with an emoji specified 
 # Discord bot setup
 Before use, set up a Discord App with bot features. Enable the `Read Message`, `Send Message`, and `Add Reactions` permissions. Make sure the bot is not public. Then, add the bot to the designated server. Keep the authorization token for configuration below.
 
+# Repository setup
+
+```
+$ chmod +x index.js
+```
+
+For linux, use
+
+```
+$ sudo apt-get install chromium
+```
+
 # Configuration
 Create a `config.json` as follows.
 
